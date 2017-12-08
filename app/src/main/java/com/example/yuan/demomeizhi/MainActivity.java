@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -54,7 +55,9 @@ public class MainActivity extends AppCompatActivity
     private void setAdapter()
     {
         madapter = new MyAdapter(dataList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //StaggeredGridLayoutManager实现两列的瀑布流效果
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(madapter);
 
 //        madapter.notifyDataSetChanged();
@@ -83,6 +86,9 @@ public class MainActivity extends AppCompatActivity
                 refreshlayout.finishLoadmore(2000);
             }
         });
+
+
+
 
 
 
